@@ -1,4 +1,4 @@
-package leetcode.sum;
+package sum;
 
 import java.util.*;
 

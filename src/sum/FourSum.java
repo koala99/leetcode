@@ -1,8 +1,4 @@
-package leetcode.sum;
-
-/**
- * Created by lilei on 2017/7/1.
- */
+package sum;
 
 import java.util.*;
 

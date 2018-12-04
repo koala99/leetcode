@@ -1,4 +1,4 @@
-package leetcode.base;
+package base;
 
 public class Test {
     public static void main(String args[]) {
@@ -32,10 +32,10 @@ public class Test {
                 for (int i = index1; i <= index2; i++) {
                     System.out.print(str.charAt(i));
                 }
-                for (int i = 0; i < index1 ; i++) {
+                for (int i = 0; i < index1; i++) {
                     System.out.print(str.charAt(i));
                 }
-                for (int i = index2+1; i < str.length(); i++) {
+                for (int i = index2 + 1; i < str.length(); i++) {
                     System.out.print(str.charAt(i));
                 }
             }

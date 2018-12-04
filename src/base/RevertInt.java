@@ -1,4 +1,4 @@
-package leetcode.base;
+package base;
 
 import java.util.logging.Level;
 
