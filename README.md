@@ -1,3 +1,2 @@
-# Algorithm-Practice
-some Algorithm Practice  and design patterns;
+Practice Leetcode  by Java
 
