@@ -4,8 +4,7 @@ public class Test {
     public static void main(String[] args) {
         char diff = new Test().findTheDifference("abcds", "abcdse");
 //        System.out.print(diff);
-        int[] arrays = {2, 2, 4, 5, 6, 4, 5, 7, 6};
-        System.out.print(new Test().singleNumber(arrays));
+
     }
 
     public char findTheDifference(String s, String t) {
@@ -26,11 +25,5 @@ public class Test {
         return t.charAt(i);
     }
 
-    public int singleNumber(int[] nums) {
-        int result = 0;
-        for (int i = 0; i < nums.length; i++) {
-            result = result ^ nums[i];
-        }
-        return result;
-    }
+
 }
