@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Question2 {
     //231. 2的幂
@@ -78,5 +76,20 @@ public class Question2 {
             set.add(newName + domain);
         }
         return set.size();
+    }
+
+    //118 杨辉三角
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> lists = new ArrayList<>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> listItem = new ArrayList<>();
+            int number = 1;
+            for (int j = 0; j <= i; j++) {
+                listItem.add(number);
+                number = number * (i - j) / (j + 1);
+            }
+            lists.add(listItem);
+        }
+        return lists;
     }
 }
