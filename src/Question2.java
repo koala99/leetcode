@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Question2 {
     //231. 2的幂
@@ -60,5 +62,21 @@ public class Question2 {
                 return A[i];
         }
         return 0;
+    }
+
+    // 929. 独特的电子邮件地址
+    public static int numUniqueEmails(String[] emails) {
+        Set<String> set = new HashSet<>();
+        for (String email : emails) {
+            //本地名称
+            String name = email.substring(0, email.indexOf("@"));
+            //域名
+            String domain = email.substring(email.indexOf("@"));
+            //根据指定规则解析后的本地名称，先按加号切割字符串，然后替换'.'
+            String newName = name.substring(0, name.indexOf("+")).replaceAll(".", "");
+            //使用HashSet去重
+            set.add(newName + domain);
+        }
+        return set.size();
     }
 }
