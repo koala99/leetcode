@@ -4,6 +4,6 @@ public class Test {
 //          System.out.println(Question2.isPowerOfThree(0));
 //        Question1.singleNumber3(arrays);
 //          System.out.println(Question2.toLowerCase("AbssS"));
-
+    System.out.println(Question1.lengthOfLongestSubstring("abcabcbb"));
     }
 }
