@@ -1,3 +1,5 @@
+import base.ListNode;
+
 import java.util.*;
 
 public class Question2 {
@@ -92,4 +94,145 @@ public class Question2 {
         }
         return lists;
     }
+
+    public boolean isValid(String s) {
+        if (s.length() == 0)
+            return true;
+        if ((s.length() & 1) == 1)
+            return false;
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            switch (s.charAt(i)) {
+                case '(':
+                case '[':
+                case '{':
+                    stack.push(s.charAt(i));
+                    continue;
+                case ')':
+                    if (stack.isEmpty() || stack.pop() != '(')
+                        return false;
+                    continue;
+                case ']':
+                    if (stack.isEmpty() || stack.pop() != '[')
+                        return false;
+                    continue;
+                case '}':
+                    if (stack.isEmpty() || stack.pop() != '{')
+                        return false;
+                    continue;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    //66. 加一
+    public static int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            digits[i]++;
+            digits[i] = digits[i] % 10;
+            if (digits[i] != 0) return digits;
+        }
+        digits = new int[digits.length + 1];
+        digits[0] = 1;
+        return digits;
+    }
+
+    //234. 回文链表
+    public boolean isPalindrome(ListNode head) {
+        // 要实现 O(n) 的时间复杂度和 O(1) 的空间复杂度，需要翻转后半部分
+        if (head == null || head.next == null) {
+            return true;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+        // 根据快慢指针，找到链表的中点
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        slow = reverse(slow.next);
+        while (slow != null) {
+            if (head.val != slow.val) {
+                return false;
+            }
+            head = head.next;
+            slow = slow.next;
+        }
+        return true;
+    }
+
+    private ListNode reverse(ListNode head) {
+        // 递归到最后一个节点，返回新的新的头结点
+        if (head.next == null) {
+            return head;
+        }
+        ListNode newHead = reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+
+    //415. 字符串相加
+    public String addStrings(String num1, String num2) {
+        StringBuilder str = new StringBuilder();
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        int carry = 0;
+        while (i >= 0 && j >= 0) {
+            int res = num1.charAt(i) - '0' + num2.charAt(j) - '0' + carry;
+            if (res >= 10) carry = 1;
+            else carry = 0;
+            res = res % 10;
+            str.append(res);
+            i--;
+            j--;
+        }
+        while (j >= 0) {
+            int res = num2.charAt(j) - '0' + carry;
+            if (res >= 10) carry = 1;
+            else carry = 0;
+            res = res % 10;
+            str.append(res);
+            j--;
+        }
+        while (i >= 0) {
+            int res = num1.charAt(i) - '0' + carry;
+            if (res >= 10) carry = 1;
+            else carry = 0;
+            res = res % 10;
+            str.append(res);
+            i--;
+        }
+        if (carry == 1) str.append("1");
+        return str.reverse().toString();
+    }
+
+
+    //38. 报数
+    public String countAndSay(int n) {
+        String str = "1";
+        for (int i = 2; i <= n; i++) {
+            StringBuilder builder = new StringBuilder();
+            char pre = str.charAt(0);
+            int count = 1;
+            for (int j = 1; j < str.length(); j++) {
+                char c = str.charAt(j);
+                if (c == pre) {
+                    count++;
+                } else {
+                    builder.append(count).append(pre);
+                    pre = c;
+                    count = 1;
+                }
+            }
+            builder.append(count).append(pre);
+            str = builder.toString();
+        }
+
+        return str;
+    }
+
+
 }
+
+

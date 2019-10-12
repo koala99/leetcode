@@ -66,21 +66,6 @@ public class Question1 {
         return result;
     }
 
-
-    // 283. 移动零  用两个下标来判断
-    public static void moveZeroes(int[] nums) {
-        int j = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                if (nums[j] == 0) {
-                    nums[j] = nums[i];
-                    nums[i] = 0;
-                }
-                j++;
-            }
-        }
-    }
-
     //3. 无重复字符的最长子串
     public static int lengthOfLongestSubstring(String s) {
         int length = 0;

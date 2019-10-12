@@ -1,15 +1,16 @@
 package sum;
+import base.ListNode;
 
 public class Sum {
     //2. 两数相加
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
+//    public class base.ListNode {
+//        int val;
+//        base.ListNode next;
+//
+//        base.ListNode(int x) {
+//            val = x;
+//        }
+//    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummyHead = new ListNode(0);
