@@ -232,6 +232,90 @@ public class Question2 {
         return str;
     }
 
+    //23. 合并K个升序链表
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        Queue<ListNode> pq = new PriorityQueue<>((v1, v2) -> v1.val - v2.val);
+        for (ListNode node : lists) {
+            if (node != null) {
+                pq.offer(node);
+            }
+        }
+
+        ListNode dummyHead = new ListNode(0);
+        ListNode tail = dummyHead;
+        while (!pq.isEmpty()) {
+            ListNode tmp=tail;
+            System.out.print(tmp.val + " ");
+            while (tmp.next != null) {
+                tmp = tmp.next;
+                System.out.print(tmp.val + " ");
+            }
+            System.out.println("///////");
+            ListNode minNode = pq.poll();
+            tail.next = minNode;
+
+             tmp=tail;
+            System.out.print(tmp.val + " ");
+            while (tmp.next != null) {
+                tmp = tmp.next;
+                System.out.print(tmp.val + " ");
+            }
+            System.out.println("-----");
+
+
+
+
+            tail = minNode;
+
+            tmp=tail;
+            System.out.print(tmp.val + " ");
+            while (tmp.next != null) {
+                tmp = tmp.next;
+                System.out.print(tmp.val + " ");
+            }
+            System.out.println("xxxxx");
+
+            if (minNode.next != null) {
+                pq.offer(minNode.next);
+//                for (ListNode node:pq) {
+//                    System.out.print(node.val + " ");
+//                }
+//                System.out.println("---------- ");
+            }
+
+             tmp=dummyHead;
+            System.out.print(tmp.val + " ");
+            while (tmp.next != null) {
+                tmp = tmp.next;
+                System.out.print(tmp.val + " ");
+            }
+            System.out.println("yyyyy");
+        }
+
+        return dummyHead.next;
+    }
+
+    // topK问题是指：从海量数据中寻找最大的前k个数据，比如从1亿个数据中，寻找最大的1万个数。
+    public int findKthLargest3(int[] nums, int k) {   //时间复杂度：O(NlogK)，遍历数据 O(N)，堆内元素调整 O(K)，空间复杂度：O(K)
+        int len = nums.length;
+        // 使用一个含有 k 个元素的最小堆
+        // k 堆的初始容量，(a,b) -> a -b 比较器
+        PriorityQueue<Integer> minTop = new PriorityQueue<>(k, (a, b) -> a - b);
+        for (int i = 0; i < k; i++) {
+            minTop.add(nums[i]);
+        }
+
+        for (int i = k; i < len; i++) {
+            Integer topEle = minTop.peek();  // 返回队头元素（不删除），失败时前者抛出null
+            // 只要当前遍历的元素比堆顶元素大，堆顶弹出，遍历的元素进去
+            if (nums[i] > topEle) {
+                minTop.poll();  // 获取队头元素并删除，并返回，失败时前者抛出null，再调整堆结构
+                minTop.offer(nums[i]);  // 在队尾插入元素，插入失败时抛出false，并调整堆结构
+            }
+        }
+        return minTop.peek();
+    }
 
 }
 
