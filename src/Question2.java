@@ -245,36 +245,13 @@ public class Question2 {
         ListNode dummyHead = new ListNode(0);
         ListNode tail = dummyHead;
         while (!pq.isEmpty()) {
-            ListNode tmp=tail;
-            System.out.print(tmp.val + " ");
-            while (tmp.next != null) {
-                tmp = tmp.next;
-                System.out.print(tmp.val + " ");
-            }
-            System.out.println("///////");
             ListNode minNode = pq.poll();
             tail.next = minNode;
-
-             tmp=tail;
-            System.out.print(tmp.val + " ");
-            while (tmp.next != null) {
-                tmp = tmp.next;
-                System.out.print(tmp.val + " ");
-            }
-            System.out.println("-----");
 
 
 
 
             tail = minNode;
-
-            tmp=tail;
-            System.out.print(tmp.val + " ");
-            while (tmp.next != null) {
-                tmp = tmp.next;
-                System.out.print(tmp.val + " ");
-            }
-            System.out.println("xxxxx");
 
             if (minNode.next != null) {
                 pq.offer(minNode.next);
@@ -284,13 +261,6 @@ public class Question2 {
 //                System.out.println("---------- ");
             }
 
-             tmp=dummyHead;
-            System.out.print(tmp.val + " ");
-            while (tmp.next != null) {
-                tmp = tmp.next;
-                System.out.print(tmp.val + " ");
-            }
-            System.out.println("yyyyy");
         }
 
         return dummyHead.next;
