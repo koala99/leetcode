@@ -1,8 +1,5 @@
 import javax.print.attribute.standard.NumberUp;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Question1 {
     // 771. Jewels and Stones
@@ -68,22 +65,15 @@ public class Question1 {
 
     //3. 无重复字符的最长子串
     public static int lengthOfLongestSubstring(String s) {
-        int length = 0;
         int max = 0;
-        List list = new ArrayList<String>();
+        int left = 0;
+        HashMap<Character, Integer> map = new HashMap();
         for (int i = 0; i < s.length(); i++) {
-            String tmpChar = String.valueOf(s.charAt(i));
-            if (list.contains(tmpChar)) {
-                length = 0;
-                int index = list.indexOf(tmpChar);
-                for (int j = 0; j < index + 1; j++) {
-                    list.remove(0);
-                }
+            if (map.containsKey(s.charAt(i))) {
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
             }
-            list.add(tmpChar);
-            length = list.size();
-            if (max < length)
-                max = length;
+            map.put(s.charAt(i), i);
+            max = Math.max(max, i - left + 1);
         }
         return max;
     }

@@ -287,6 +287,7 @@ public class Question2 {
         return minTop.peek();
     }
 
+
 }
 
 
