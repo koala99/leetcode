@@ -92,4 +92,23 @@ public class Question4 {
     }
 
 
+   // 11. 盛最多水的容器
+   public int maxArea(int[] height) {
+       int max =0;
+       int left=0;
+       int right=height.length-1;
+       while(left<right){
+           int tmpMax=Math.min(height[left],height[right])*(right-left);
+           if(tmpMax>max){
+               max=tmpMax;
+           }
+           if(height[left]>height[right]){
+               right--;
+           }else{
+               left++;
+           }
+       }
+       return max;
+   }
+
 }

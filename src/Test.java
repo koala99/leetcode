@@ -58,13 +58,34 @@ public class Test {
 //            }
 //            System.out.println(" ");
 //        }
-        List<Integer> list = new Question4().findAnagrams("baa", "aa");
-        System.out.println(" ");
-        for (Integer integer : list) {
-            System.out.print(integer + " ");
+//        List<Integer> list = new Question4().findAnagrams("baa", "aa");
+//        System.out.println(" ");
+//        for (Integer integer : list) {
+//            System.out.print(integer + " ");
+//        }
+
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        String value = "";
+        String targetStr = "";
+        HashMap<String, Integer> map = new HashMap();
+        while (in.hasNextLine()) { // 注意 while 处理多个 case
+            value = in.nextLine();
+            targetStr = in.nextLine();
         }
-
-
+        for (int i = 0; i < value.length(); i++) {
+            String key = String.valueOf(value.charAt(i)).toLowerCase();
+            if (map.containsKey(key)) {
+                map.put(key, map.get(key) + 1);
+            } else {
+                map.put(key, 1);
+            }
+        }
+        if (map.containsKey(targetStr.toLowerCase())) {
+            System.out.println(map.get(targetStr.toLowerCase()));
+        } else {
+            System.out.println(0);
+        }
     }
 
 }
